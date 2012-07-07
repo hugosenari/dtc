@@ -16,7 +16,7 @@ class Dtc(object):
     def __init__(self, dirs = []):
         self.loaded_dirs = []
         def set_plugin_dirs(arg, dirpath, files):
-            logging.debug('addind dir: %s to path', dirpath)
+            logging.debug('add dir: %s to path', dirpath)
             self.loaded_dirs.append(dirpath)
 
         path.walk(interfaces.__path__[0], set_plugin_dirs, None)

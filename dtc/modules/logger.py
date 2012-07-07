@@ -3,11 +3,17 @@ Created on May 15, 2012
 
 @author: hugosenari
 '''
+
 import logging
 
 
 from plugnplay import Plugin
-from pig.core.interfaces import loggable, module
+from dtc.core.interfaces import module
+print 'deu zebra?'
+import sys
+print sys.path
+from dtc.core.interfaces import loggable
+print 'deu zebra?'
 
 logging.basicConfig(level=logging.INFO)
 

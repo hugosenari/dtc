@@ -5,7 +5,7 @@ Created on May 14, 2012
 '''
 
 from plugnplay import Interface, Plugin
-from pig.core.interfaces.module import _CoreModule
+from dtc.core.interfaces.module import _CoreModule
 
 class Visible(Interface):
     '''

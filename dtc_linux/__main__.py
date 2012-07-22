@@ -5,7 +5,7 @@ Created on Jun 2, 2012
 '''
 from dtc.__main__ import main as dtc_main
 from dtc_linux.core import utils
-from dtc_linux import modules
+from dtc_linux import modulares as modules
 
 def main(*args, **kws):
     dirs = kws.get('dirs', [])

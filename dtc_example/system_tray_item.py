@@ -10,9 +10,6 @@ from dtc.core.interfaces.runnable import Runnable
 class ItemOnSysTray(Plugin):
     implements = implements = [Module, Runnable]
     
-    def __init__(self):
-        self.running
-    
     #methods for Module
     @property
     def version(self, *arg, **vargs):

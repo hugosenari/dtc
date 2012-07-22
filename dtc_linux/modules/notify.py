@@ -6,10 +6,11 @@ Created on May 15, 2012
 
 import pynotify
 from plugnplay import Plugin
-from dtc.core.interfaces import module, notifiable
+from dtc.core.interfaces.module import Module
+from dtc.core.interfaces.notifiable import Notifiable
 
 class Notify(Plugin):
-    implements = [module.Module, notifiable.Notifiable]
+    implements = [Module, Notifiable]
     
     def __init__(self, *args, **vargs):
         pynotify.init('Pig Notifier')

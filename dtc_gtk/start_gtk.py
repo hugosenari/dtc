@@ -5,13 +5,18 @@ Created on Jun 30, 2012
 '''
 import gtk
 from plugnplay import Plugin
-from dtc.core.interfaces import module, starter, loggable
+from dtc.core.interfaces.module import Module
+from dtc.core.interfaces.mainloop import MainLoop
+from dtc.core.interfaces.loggable import Loggable
 
 class Start(Plugin):
     '''
     Start gtk
     '''
-    implements = [module.Module, starter.Starter]
+    implements = [Module, MainLoop]
+    
+    def __init__(self):
+        self._running = False
 
     #methods for Module
     @property
@@ -38,7 +43,19 @@ class Start(Plugin):
     def author(self, *args, **vargs):
         return "hugosenari <hugosenari@gmail.com>"
     
-    #methods for Starter
-    def start(self, *arg, **args):
-        loggable.Loggable.debug("dtc gtk", "start")
-        gtk.main()
+    #methods for MainLoop
+    def run(self, *arg, **args):
+        Loggable.debug("dtc mainloop gtk", "start")
+        try:
+            gtk.main()
+            self._running = True
+        except:
+            self._running = False
+        
+    def quit(self, *arg, **args):
+        gtk.main_quit()
+        self._running = False
+        
+    @property
+    def running(self):
+        return self._running

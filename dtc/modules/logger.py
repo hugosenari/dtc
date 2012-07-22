@@ -9,11 +9,7 @@ import logging
 
 from plugnplay import Plugin
 from dtc.core.interfaces import module
-print 'deu zebra?'
-import sys
-print sys.path
 from dtc.core.interfaces import loggable
-print 'deu zebra?'
 
 logging.basicConfig(level=logging.INFO)
 

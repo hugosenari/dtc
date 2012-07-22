@@ -4,13 +4,17 @@ Created on Jun 30, 2012
 @author: hugosenari
 '''
 from plugnplay import Plugin
-from dtc.core.interfaces import indictable, module, starter, visible, runnable
+from dtc.core.interfaces.indictable import Indictable
+from dtc.core.interfaces.module import Module
+from dtc.core.interfaces.starter import Starter
+from dtc.core.interfaces.visible import Visible
+from dtc.core.interfaces.runnable import Runnable
 
 class Start(Plugin):
     '''
     Start app
     '''
-    implements = [module.Module, starter.Starter]
+    implements = [Module, Starter]
 
     #methods for Module
     @property
@@ -39,13 +43,13 @@ class Start(Plugin):
     
     #methods for Starter
     def start(self, *arg, **args):
-        tray = indictable.Indictable
+        tray = Indictable
         
         user_modules = []
-        user_modules.extend(visible.Visible.implementors())
-        user_modules.extend(runnable.Runnable.implementors())
+        user_modules.extend(Visible.implementors())
+        user_modules.extend(Runnable.implementors())
         for user_module in user_modules:
-            if (module.Module in user_module.implements):
+            if (Module in user_module.implements):
                 def callback(*args, **kws):
                     if hasattr(user_module,'show'):
                         user_module.show(*args, **kws)

@@ -4,14 +4,16 @@ Created on Jun 30, 2012
 @author: hugosenari
 '''
 from plugnplay import Plugin
-from dtc.core.interfaces import module, loggable, indictable
+from dtc.core.interfaces.module import Module
+from dtc.core.interfaces.loggable import Loggable
+from dtc.core.interfaces.indictable import Indictable
 import gtk
 
 class Tray(Plugin):
     '''
     Gtk tray for dtc
     '''
-    implements = [module.Module, indictable.Indictable]
+    implements = [Module, Indictable]
     def __init__(self):
         self.itens = {}
         self.menu = gtk.Menu()
@@ -50,13 +52,13 @@ class Tray(Plugin):
         self.menu.append(menu_item)
         key = len(self.itens.keys())
         self.itens[key] = menu_item
-        loggable.Loggable.debug("appendItem", "'%s' => '%s'" % (key, title)) 
+        Loggable.debug("appendItem", "'%s' => '%s'" % (key, title)) 
         return key 
     
     def removeItem(self, item_id=None, *args, **vargs):
         menu_item = self.itens.get(item_id, None)
         if menu_item:
-            loggable.Loggable.debug("removeItem", item_id)
+            Loggable.debug("removeItem", item_id)
             menu_item.destroy()
     
     def show(self, name='dtc', icon='exec', tooltip='DTC - Script Runner',*args, **vargs):
@@ -90,8 +92,8 @@ class Tray(Plugin):
                 def show_menu(self, tray, event, activate_time, menu, *args, **kws):
                     menu.popup(None, None, gtk.status_icon_position_menu, event, activate_time, tray)
                 tray.connect('popup-menu', show_menu, self.menu)
-                loggable.Loggable.debug("StatusIcon", "Use StatusIcon")
-            loggable.Loggable.info("Starter indicator", "Your indicatior module starts", self.itens)
+                Loggable.debug("StatusIcon", "Use StatusIcon")
+            Loggable.info("Starter indicator", "Your indicatior module starts", self.itens)
             gtk.main()
         else:
-            loggable.Loggable.warn("Empty indicator", "No itens found to populate indicator menu")
+            Loggable.warn("Empty indicator", "No itens found to populate indicator menu")

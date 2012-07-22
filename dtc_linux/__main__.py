@@ -12,7 +12,6 @@ def main(*args, **kws):
     dirs.append(modules.__path__[0])
     user_modules = utils.CoreConfigs.get_cfg_dir("modules", **kws)
     for directory in user_modules:
-        print directory
         dirs.append(directory) 
     kws['dirs'] = dirs 
     dtc_main(**kws)

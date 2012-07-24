@@ -1,0 +1,21 @@
+'''
+Created on Jul 2, 2012
+
+@author: hugosenari
+'''
+
+CLICK = LEFT_CLICK = "LEFT_CLICK"
+
+MENU = RIGHT_CLICK = "RIGHT_CLICK"
+
+MIDLE_CLICK = "MIDLE_CLICK"
+
+KEY_PRESS = "KEY_PRESS"
+
+BLUR = "BLUR"
+
+FOCUS = "FOCUS"
+
+HOVER = "HOVER"
+
+SCROLL = "SCROLL"  

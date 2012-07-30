@@ -1,6 +1,7 @@
 What it does
 ============
 
+
 This is one working in progress version of pig for end user.
 
 The main idea of this project are offer usable interface to 

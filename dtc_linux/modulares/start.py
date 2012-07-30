@@ -44,19 +44,21 @@ class Start(Plugin):
     #methods for Starter
     def start(self, *arg, **args):
         tray = Indictable
-        
         user_modules = []
         user_modules.extend(Visible.implementors())
         user_modules.extend(Runnable.implementors())
         for user_module in user_modules:
             if (Module in user_module.implements):
-                def callback(*args, **kws):
-                    if hasattr(user_module,'show'):
-                        user_module.show(*args, **kws)
-                    elif hasattr(user_module,'run'):
-                        user_module.run(*args, **kws)
                 tray.appendItem(user_module.title,
-                                callback,
+                                self.get_callback(user_module),
                                 user_module.description)
         tray.show()
 
+    def get_callback(self, item):
+        ## I don't know why but define callback at start don't work
+        def callback(*args, **kws):
+            if hasattr(item,'show'):
+                item.show(*args, **kws)
+            elif hasattr(item,'run'):
+                item.run(*args, **kws)
+        return callback

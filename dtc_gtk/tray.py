@@ -67,22 +67,13 @@ class Tray(Plugin):
             try:
                 #try use appindicator
                 import appindicator
-#                ind = appindicator.Indicator(name,
-#                                          icon,
-#                                          appindicator.CATEGORY_APPLICATION_STATUS)
-#                ind.set_status(appindicator.STATUS_ACTIVE)
-#                ind.set_label(tooltip)
-#                ind.set_menu(self.menu)
-#                loggable.Loggable.debug("Appindicator", "Use appindicator")
-                ind = appindicator.Indicator ("debian-doc-menu","distributor-logo", appindicator.CATEGORY_APPLICATION_STATUS)
-                ind.set_status (appindicator.STATUS_ACTIVE)
-                menu = gtk.Menu()
-                def faq_clicked(*args, **kws): print args, kws
-                faq_item = gtk.MenuItem("Debian FAQ")
-                faq_item.connect("activate", faq_clicked)
-                faq_item.show()
-                menu.append(faq_item)
-                ind.set_menu(menu)
+                ind = appindicator.Indicator(name,
+                                          icon,
+                                          appindicator.CATEGORY_APPLICATION_STATUS)
+                ind.set_status(appindicator.STATUS_ACTIVE)
+                #ind.set_label(tooltip)
+                ind.set_menu(self.menu)
+                Loggable.debug("Appindicator", "Use appindicator")
             except:
                 #else use gtk.StatusIcon
                 tray = gtk.StatusIcon()

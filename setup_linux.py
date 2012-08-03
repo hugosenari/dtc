@@ -12,7 +12,7 @@ setup(name='dtc_linux',
       author_email='hugosenari@gmail.com',
       url='https://github.com/hugosenari/dtc',
       keywords = ["plugnplay", "script runner"],
-      packages=('dtc_linux', 'dtc_linux.core', 'dtc_linux.modules'),
+      packages=('dtc_linux', 'dtc_linux.core', 'dtc_linux.modulares'),
       requires=('dtc (>=0.1)', 'notify2 (>=0.3)'),
       license = "GPL",
       classifiers=[
